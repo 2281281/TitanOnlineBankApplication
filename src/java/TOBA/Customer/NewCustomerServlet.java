@@ -33,7 +33,7 @@ public class NewCustomerServlet extends HttpServlet {
             String address = request.getParameter("address");
             String address2 = request.getParameter("address2");
             String city = request.getParameter("city");
-            String state = request.getParameter("state");
+            String st = request.getParameter("st");
             String zip = request.getParameter("zip");
             String email = request.getParameter("email");
             
@@ -41,16 +41,16 @@ public class NewCustomerServlet extends HttpServlet {
             String password="welcome1";
             
                    // store data in User object
-            User user = new User(firstName, lastName, phone, address, address2, city, state, zip, email, username, password);
+            User user = new User(firstName, lastName, phone, address, address2, city, st, zip, email, username, password);
             
             // validate the parameters
             if (firstName == null || lastName == null || phone == null || address == null 
-                    || address2 == null || city == null || state == null || zip == null
+                    || address2 == null || city == null || st == null || zip == null
                     || email == null ||
                     firstName.isEmpty() || lastName.isEmpty() || 
                     phone.isEmpty() || address.isEmpty() ||
                     address2.isEmpty() || city.isEmpty() ||
-                    state.isEmpty() || zip.isEmpty() || email.isEmpty()) {
+                    st.isEmpty() || zip.isEmpty() || email.isEmpty()) {
                 
                 url = "/new_customer.jsp";
             }

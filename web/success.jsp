@@ -52,7 +52,7 @@
 <label>City:</label>
 <span>${user.city}</span><br>
 <label>State:</label>
-<span>${user.state}</span><br>
+<span>${user.st}</span><br>
 <label>Zip Code:</label>
 <span>${user.zip}</span><br>
 <label>Email:</label>

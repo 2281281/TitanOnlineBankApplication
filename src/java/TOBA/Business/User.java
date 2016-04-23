@@ -10,7 +10,7 @@ public class User implements Serializable {
     private String address;
     private String address2;
     private String city;
-    private String state;
+    private String st;
     private String zip;
     private String email;
     private String username;
@@ -23,40 +23,40 @@ public class User implements Serializable {
         address = "";
         address2 = "";
         city = "";
-        state = "";
+        st = "";
         email = "";
         username = "";
         password = "";
     }
 
     public User(String firstName, String lastName, String phone, String address, 
-            String address2, String city, String state, String zip, String email, String username, String password) {
+            String address2, String city, String st, String zip, String email, String username, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.phone = phone;
         this.address = address;
         this.address2 = address2;
         this.city = city;
-        this.state = state;
+        this.st = st;
         this.zip = zip; 
         this.email = email;
         this.username = username;
         this.password = password;
     }
 
-    public String getFirstName() {
+    public String getfirstName() {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
+    public void setfirstName(String firstName) {
         this.firstName = firstName;
     }
 
-    public String getLastName() {
+    public String getlastName() {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
+    public void setlastName(String lastName) {
         this.lastName = lastName;
     }
     
@@ -65,7 +65,7 @@ public class User implements Serializable {
     }
 
     public void setphone(String phone) {
-        this.phone = lastName;
+        this.phone = phone;
         
     }
     
@@ -91,12 +91,12 @@ public class User implements Serializable {
     public void setcity(String city) {
         this.city = city;
     }
-            public String getstate() {
-        return state;
+            public String getst() {
+        return st;
     }
 
-    public void setstate(String state) {
-        this.state = state;
+    public void setst(String st) {
+        this.st= st;
     }
             public String getzip() {
         return zip;
@@ -106,27 +106,29 @@ public class User implements Serializable {
         this.zip = zip;
     }
         
-    public String getEmail() {
+    public String getemail() {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setemail(String email) {
         this.email = email;
     }
-        public String getemail() {
-        return email;
+        public String getusername() {
+        return username;
     }
     
     public void setusername(String username) {
         this.username = username;
     }
-        public String getusername() {
-        return username;
-    }
-    public void setpassword(String password) {
-        this.password = password;
-    }
         public String getpassword() {
         return password;
     }
+    public void setpassword(String password) {
+        this.password = password;}
+
+
+    public void setId(String string) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

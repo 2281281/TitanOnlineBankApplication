@@ -44,7 +44,7 @@
     <label>City:</label>
 	<input type="text" name="city" value="${user.city}" required><br>
     <label>State:</label>
-	<input type="text" name="state" value="${user.state}" required><br>
+	<input type="text" name="st" value="${user.st}" required><br>
     <label>Zip Code:</label>
 	<input type="text" name="zip" value="${user.zip}" required><br>
     <label>EMail:</label>

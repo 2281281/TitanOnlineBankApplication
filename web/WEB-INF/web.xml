@@ -16,6 +16,26 @@
         <servlet-name>LoginServlet</servlet-name>
         <servlet-class>TOBA.Controllers.LoginServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ConnectionPool</servlet-name>
+        <servlet-class>TOBA.Data.ConnectionPool</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DBUtil</servlet-name>
+        <servlet-class>TOBA.Data.DBUtil</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SQLUtil</servlet-name>
+        <servlet-class>TOBA.Data.SQLUtil</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CookieUtil</servlet-name>
+        <servlet-class>TOBA.Util.CookieUtil</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UserController</servlet-name>
+        <servlet-class>TOBA.Controllers.UserController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>User</servlet-name>
         <url-pattern>/User</url-pattern>
@@ -31,6 +51,26 @@
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/Login</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ConnectionPool</servlet-name>
+        <url-pattern>/ConnectionPool</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DBUtil</servlet-name>
+        <url-pattern>/DBUtil</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SQLUtil</servlet-name>
+        <url-pattern>/SQLUtil</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CookieUtil</servlet-name>
+        <url-pattern>/CookieUtil</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UserController</servlet-name>
+        <url-pattern>/UserController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>

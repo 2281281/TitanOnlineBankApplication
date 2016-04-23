@@ -28,17 +28,10 @@
 </div>
 
 <div class="col-9">
-<h1>Account Created</h1>
+<h1>Account Activity</h1>
 <section>
-<p>The account has been successfully created.</p> 
-
-<label>First Name:</label>
-<span>${user.firstName}</span><br>
-<label>Last Name:</label>
-<span>${user.lastName}</span><br>
-<label>Email:</label>
-<span>${user.email}</span><br>
-
+<p>Customer account information</p>
+         
     </section>
 </div>
 

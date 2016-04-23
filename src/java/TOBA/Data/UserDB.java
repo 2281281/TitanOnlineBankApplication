@@ -1,86 +1,162 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package TOBA.Data;
+import java.sql.*;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import TOBA.Data.UserDB;
+import TOBA.Business.User;
 
-/**
- *
- * @author Karen
- */
-public class UserDB extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet UserDB</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet UserDB at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+public class UserDB {
+
+    public static void insert(User user) {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        String query
+                = "INSERT INTO User (firstName, lastName, phone, address, "
+                + "address, address2, city, st, zip, email, username, password"
+                + "VALUES (?, ?, ?, ?, "
+                + "?, ?, ?, ?, ?, ?, "
+                + "?, ?, ?)";
+                         
+        try {
+            ps.setString(1, user.getfirstName());
+            ps.setString(2, user.getlastName());
+            ps.setString(3, user.getphone());
+            ps.setString(4, user.getaddress());
+            ps.setString(5, user.getaddress2());
+            ps.setString(6, user.getcity());
+            ps.setString(7, user.getst());
+            ps.setString(8, user.getzip());
+            ps.setString(9, user.getemail());
+            ps.setString(10, user.getusername());
+            ps.setString(11, user.getpassword());
+            
+            ps.executeUpdate();
+            
+            //Get the user ID from the last INSERT statement.
+            String identityQuery = "SELECT @@IDENTITY AS IDENTITY";
+            Statement identityStatement = connection.createStatement();
+            ResultSet identityResultSet = identityStatement.executeQuery(identityQuery);
+            identityResultSet.next();
+            String userID = identityResultSet.getString("IDENTITY");
+            identityResultSet.close();
+            identityStatement.close();
+
+            // Set the user ID in the User object
+            user.setId(userID);
+        } catch (SQLException e) {
+            System.err.println(e);
+        } finally {
+            DBUtil.closeResultSet(rs);
+            DBUtil.closePreparedStatement(ps);
+            pool.freeConnection(connection);
         }
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
+    public static void update(User user) {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        String query = "UPDATE User SET "
+                + "firstName = ?, "
+                + "lastName = ?, "
+                + "phone = ?, "
+                + "address = ?, "
+                + "address2 = ?, "
+                + "city = ?, "
+                + "st = ?, "
+                + "zip = ?, "
+                + "username = ?, "
+                + "password = ?, "
+                + "WHERE email = ?";
+        try {
+            ps = connection.prepareStatement(query);
+            ps.setString(13, user.getfirstName());
+            ps.setString(13, user.getlastName());
+            ps.setString(13, user.getphone());
+            ps.setString(13, user.getaddress());
+            ps.setString(13, user.getaddress2());
+            ps.setString(13, user.getcity());
+            ps.setString(13, user.getst());
+            ps.setString(13, user.getzip());
+            ps.setString(13, user.getemail());
+            ps.setString(13, user.getusername());
+            ps.setString(13, user.getpassword());
+
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            System.err.println(e);
+        } finally {
+            DBUtil.closeResultSet(rs);
+            DBUtil.closePreparedStatement(ps);
+            pool.freeConnection(connection);
+        }
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
+    public static User selectUser(String email) {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        String query = "SELECT * FROM User "
+                + "WHERE Email = ?";
+        try {
+            ps = connection.prepareStatement(query);
+            ps.setString(1, email);
+            rs = ps.executeQuery();
+            User user = null;
+            
+            if (rs.next()) {
+                user = new User();
+                user.setId(rs.getString("UserID"));
+                user.setfirstName(rs.getString("firstName"));
+                user.setlastName(rs.getString("lastName"));
+                user.setphone(rs.getString("phone"));
+                user.setaddress(rs.getString("address"));
+                user.setaddress2(rs.getString("address2"));
+                user.setcity(rs.getString("city"));
+                user.setst(rs.getString("st"));
+                user.setzip(rs.getString("zip"));
+                user.setemail(rs.getString("email"));
+                user.setusername(rs.getString("username"));
+                user.setpassword(rs.getString("password"));
+            }
+            return user;
+        } catch (SQLException e) {
+            System.err.println(e);
+            return null;
+        } finally {
+            DBUtil.closeResultSet(rs);
+            DBUtil.closePreparedStatement(ps);
+            pool.freeConnection(connection);
+        }
     }
+    
+    public static boolean emailExists(String email) {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
-
+        String query = "SELECT email FROM User "
+                + "WHERE email = ?";
+        try {
+            ps = connection.prepareStatement(query);
+            ps.setString(1, email);
+            rs = ps.executeQuery();
+            return rs.next();
+        } catch (SQLException e) {
+            System.err.println(e);
+            return false;
+        } finally {
+            DBUtil.closeResultSet(rs);
+            DBUtil.closePreparedStatement(ps);
+            pool.freeConnection(connection);
+        }
+    }    
 }
