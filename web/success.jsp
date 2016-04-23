@@ -54,9 +54,13 @@
 <label>State:</label>
 <span>${user.state}</span><br>
 <label>Zip Code:</label>
-<span>${user.zip}</span>
+<span>${user.zip}</span><br>
 <label>Email:</label>
 <span>${user.email}</span><br>
+<label>User Name:</label>
+<span>${user.username}</span><br>
+<label>Password:</label>
+<span>${user.password}</span><br>
 
     </section>
 </div>

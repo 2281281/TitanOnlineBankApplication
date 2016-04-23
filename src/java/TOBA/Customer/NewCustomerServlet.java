@@ -26,7 +26,7 @@ public class NewCustomerServlet extends HttpServlet {
             url = "/new_customer.jsp";    // the "register new customer" page
         } 
         else if (action.equals("add")) {
-            // get parameters from the request
+                       // get parameters from the request
             String firstName = request.getParameter("firstName");
             String lastName = request.getParameter("lastName");
             String phone = request.getParameter("phone");
@@ -36,15 +36,12 @@ public class NewCustomerServlet extends HttpServlet {
             String state = request.getParameter("state");
             String zip = request.getParameter("zip");
             String email = request.getParameter("email");
-            String username = request.getParameter("username");
-            String password = request.getParameter("password");
-        
-                   // store data in User object
-            User user = new User(firstName, lastName, phone, address, address2, city, state, zip, email);
             
-            //create username
-            username=lastName + zip;
-            password="welcome1";
+            String username=lastName + zip;
+            String password="welcome1";
+            
+                   // store data in User object
+            User user = new User(firstName, lastName, phone, address, address2, city, state, zip, email, username, password);
             
             // validate the parameters
             if (firstName == null || lastName == null || phone == null || address == null 
@@ -54,6 +51,7 @@ public class NewCustomerServlet extends HttpServlet {
                     phone.isEmpty() || address.isEmpty() ||
                     address2.isEmpty() || city.isEmpty() ||
                     state.isEmpty() || zip.isEmpty() || email.isEmpty()) {
+                
                 url = "/new_customer.jsp";
             }
             else {
