@@ -23,9 +23,9 @@
 
 <div class="col-3 menu">
 <ul>
-          <li><a href="index.html">
+          <li><a href="index.jsp">
                   Home</a></li>
-          <li><a href="login.html">
+          <li><a href="login.jsp">
                   Login</a></li>
           <li><a href="new_customer.jsp">
                   Register</a></li>

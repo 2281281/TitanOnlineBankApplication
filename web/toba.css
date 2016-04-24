@@ -94,3 +94,35 @@ br {
 br {
     clear: both;
 }
+
+/* the styles for the top navigation bar */
+#nav_bar {
+    clear: left;
+    margin: 0;
+    padding: 0;
+    border-bottom: 2px solid #ef9c00;
+    text-align: right;
+}
+#nav_bar ul {
+    margin-bottom: .5em;
+    list-style: none;
+    padding-top: .5em;
+}
+#nav_bar li {
+    display: inline;
+    padding: 0 1.5em;
+    border-left: 2px solid black;
+}
+/* the styles for the footer */
+footer {
+    clear: both;
+    margin-top: 1em;
+    padding-top: 0.7em;
+    background-color: #424B92;
+    color: #ffffff;
+    padding: 15px;
+}
+footer p {
+    font-size: 80%;
+    text-align: center;
+}
