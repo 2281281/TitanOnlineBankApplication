@@ -14,7 +14,7 @@ public class NewCustomerServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request,
             HttpServletResponse response)
             throws ServletException, IOException {
-        String url = "/new_customer.html";
+        String url = "/new_customer.jsp";
         
         // get current action
         String action = request.getParameter("action");
@@ -47,6 +47,7 @@ public class NewCustomerServlet extends HttpServlet {
             if (firstName == null || lastName == null || phone == null || address == null 
                     || address2 == null || city == null || st == null || zip == null
                     || email == null ||
+                    
                     firstName.isEmpty() || lastName.isEmpty() || 
                     phone.isEmpty() || address.isEmpty() ||
                     address2.isEmpty() || city.isEmpty() ||

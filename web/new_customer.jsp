@@ -53,6 +53,6 @@
     <input type="submit" value="Register">
     </form>
 </div>
+
 </div>
-</body>
-</html>
+<jsp:include page="/includes/footer.jsp" />

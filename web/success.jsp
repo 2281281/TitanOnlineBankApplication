@@ -47,7 +47,7 @@
 <span>${user.phone}</span><br>
 <label>Address:</label>
 <span>${user.address}</span><br>
-<label>Address2::</label>
+<label>Address2:</label>
 <span>${user.address2}</span><br>
 <label>City:</label>
 <span>${user.city}</span><br>

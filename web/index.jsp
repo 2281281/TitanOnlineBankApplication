@@ -37,7 +37,7 @@
     Mauris nec neque quis lectus aliquet cursus. Proin faucibus dolor vitae enim condimentum, 
     eu aliquam arcu euismod.</p>
 </div>
-
+    <br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br>
 </div>
-</body>
-</html>
+<jsp:include page="/includes/footer.jsp" />

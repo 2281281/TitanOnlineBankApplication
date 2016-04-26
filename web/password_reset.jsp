@@ -24,20 +24,25 @@
                   Register</a></li>
           <li><a href="customerService.html">
                   Customer Service</a></li>
+          <li><a href="password_reset.html">
+                  Reset Password</a></li>
+
 </ul>
 </div>
 
 <div class="col-9">
-<h1>Account Activity</h1>
+<h1>Login</h1>
 <section>
-<p>Welcome</p> 
 
-<label>User Name:</label>
-<span>${user.username}</span><br>
-<label>Password:</label>
-<span>${user.password}</span><br>
+<p>Reset your password</p>
+<form action="LoginServlet" method="post">
+        <label class="pad_top">Enter Your New Password:</label>
+        <input type="password" name="password"><br>
+        <label>&nbsp;</label>
+        <input type="submit" value="reset">
+</form>
 
-    </section>
+</section>
 </div>
 
 </div>

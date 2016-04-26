@@ -24,19 +24,30 @@
                   Register</a></li>
           <li><a href="customerService.html">
                   Customer Service</a></li>
+          <li><a href="password_reset.html">
+                  Reset Password</a></li>
+
 </ul>
 </div>
 
 <div class="col-9">
 <h1>Login</h1>
 <section>
-<form action="login" method="get">
-    <label>Username</label>
-    <input type="text" name="name"><br>
-    <label>Password</label>
-    <input type="password" name="pass"><br>
-    <label>&nbsp;</label>
-    <input type="submit" value="Login">
+
+<p>Please enter a username and password to continue.</p>
+<form action="LoginServlet" method="post">
+        <input type="hidden" name="action" value="add">        
+        <label class="pad_top">Username:</label>
+        <input type="text" name="username"><br>
+        <label class="pad_top">Password:</label>
+        <input type="password" name="password"><br>
+        <label>&nbsp;</label>
+        <input type="submit" value="login">
 </form>
+
 </section>
-<jsp:include page="/includes/footer.jsp" />
+</div>
+
+</div>
+</body>
+</html>
