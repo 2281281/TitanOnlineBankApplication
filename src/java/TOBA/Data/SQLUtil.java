@@ -1,50 +1,39 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package TOBA.Data;
+
 import java.sql.*;
 
 public class SQLUtil {
 
-    public static String getHtmlRows(ResultSet results)
+    public static String getHtmlTable(ResultSet results)
             throws SQLException {
-        StringBuilder htmlRows = new StringBuilder();
+        
+        StringBuilder htmlTable = new StringBuilder();
         ResultSetMetaData metaData = results.getMetaData();
         int columnCount = metaData.getColumnCount();
 
-        htmlRows.append("<tr>");
-        String cell;
+        htmlTable.append("<table>");
+
+        // add header row
+        htmlTable.append("<tr>");
         for (int i = 1; i <= columnCount; i++) {
-            cell = "<th>" + metaData.getColumnName(i) + "</th>";
-            htmlRows.append(cell);
+            htmlTable.append("<th>");
+            htmlTable.append(metaData.getColumnName(i));
+            htmlTable.append("</th>");
         }
-        htmlRows.append("</tr>");
+        htmlTable.append("</tr>");
 
+        // add all other rows
         while (results.next()) {
-            htmlRows.append("<tr>");
+            htmlTable.append("<tr>");
             for (int i = 1; i <= columnCount; i++) {
-                cell = "<td>" + results.getString(i) + "</td>";
-                htmlRows.append(cell);
+                htmlTable.append("<td>");
+                htmlTable.append(results.getString(i));
+                htmlTable.append("</td>");
             }
+            htmlTable.append("</tr>");
         }
-        htmlRows.append("</tr>");
 
-        return htmlRows.toString();
-    }
-
-    public static String encode(String s) {
-        if (s == null) {
-            return s;
-        }
-        StringBuilder sb = new StringBuilder(s);
-        for (int i = 0; i < sb.length(); i++) {
-            char ch = sb.charAt(i);
-            if (ch == 39) {  // 39 is the ASCII code for an apostrophe
-                sb.insert(i++, "'");
-            }
-        }
-        return sb.toString();
+        htmlTable.append("</table>");
+        return htmlTable.toString();
     }
 }

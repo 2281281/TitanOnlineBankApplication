@@ -1,16 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" type="text/css" href="toba.css">
-</head>
+<jsp:include page="/includes/header.jsp" />
 
-
-<body>
-
-<div class="header">
-<h1>Titan Online Banking</h1>
-</div>
 
 <div class="row">
 
@@ -20,6 +9,8 @@
                   Home</a></li>
           <li><a href="login.jsp">
                   Login</a></li>
+          <li><a href="admin\login.html>">
+                  Admin</a></li>
           <li><a href="new_customer.jsp">
                   Register</a></li>
           <li><a href="customerService.html">
@@ -37,7 +28,7 @@
     Mauris nec neque quis lectus aliquet cursus. Proin faucibus dolor vitae enim condimentum, 
     eu aliquam arcu euismod.</p>
 </div>
-    <br><br><br><br><br><br><br><br><br>
-    <br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br>
 </div>
 <jsp:include page="/includes/footer.jsp" />

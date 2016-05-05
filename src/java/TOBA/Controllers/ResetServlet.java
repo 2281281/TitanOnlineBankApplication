@@ -9,32 +9,35 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class LoginServlet extends HttpServlet {
+public class ResetServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request,
             HttpServletResponse response)
             throws ServletException, IOException {
         
-        String url = "/login.jsp";
+        String url = "/password_reset.html";
         
         // get current action
         String action = request.getParameter("action");
         if (action == null) {
-            action = "login";  // default action
+            action = "reset";  // default action
         }
           // perform action and set URL to appropriate page
-        if (action.equals("login")) {
-            url = "/login.jsp";    // the "register new customer" page
+        if (action.equals("reset")) {
+            url = "/password_reset.html";    // the "register new customer" page
         } 
-        else if (action.equals("add")) {
+        
+        if (action.equals("add")) 
+        {
                        // get parameters from the request
 
             String username = request.getParameter("username");
             String password = request.getParameter("password");
+            String npassword = request.getParameter("npassword");
             
             // store data in User object
-            User user = new User(username, password);
+            User user = new User(username, password, npassword);
             
             // validate the parameters
             if (username == null || password == null ||
@@ -45,14 +48,9 @@ public class LoginServlet extends HttpServlet {
             }
             
             if(username.equals("jsmith@toba.com") && password.equals("letmein")){
-            url = "/account_activity.jsp";
-            }
-          //      if ((username == this.getInitParameter(username))
-          //     && (password == this.getInitParameter(password))){
-          //      url = "/account_activity.jsp";
-          //  }
-                
-            
+            password = npassword;
+            url = "/login.jsp";
+	}
             else{
                 url = "/login_failure.html";
             }

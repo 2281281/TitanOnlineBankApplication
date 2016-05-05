@@ -15,6 +15,7 @@ public class User implements Serializable {
     private String email;
     private String username;
     private String password;
+    private String npassword;
 
     public User() {
         firstName = "";
@@ -27,6 +28,7 @@ public class User implements Serializable {
         email = "";
         username = "";
         password = "";
+        npassword = "";
     }
 
     public User(String firstName, String lastName, String phone, String address, 
@@ -46,7 +48,14 @@ public class User implements Serializable {
     
      public User(String username, String password) {
         this.username = username;
-        this.password = password;}
+        this.password = password;
+    }
+     
+    public User(String username, String password, String npassword) {
+        this.username = username;
+        this.password = password;
+        this.npassword = npassword;
+    } 
 
     public String getfirstName() {
         return firstName;
@@ -130,9 +139,5 @@ public class User implements Serializable {
     public void setpassword(String password) {
         this.password = password;}
 
-
-    public void setId(String string) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
 }

@@ -1,12 +1,11 @@
 package TOBA.Customer;
 
-import TOBA.Business.User;
 import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
-//import Controllers.User;
-//import Controllers.UserDB;
+import TOBA.Data.UserDB;
+import TOBA.Business.User;
 
 public class NewCustomerServlet extends HttpServlet {
 
@@ -14,7 +13,7 @@ public class NewCustomerServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request,
             HttpServletResponse response)
             throws ServletException, IOException {
-        String url = "/new_customer.jsp";
+        String url = "/new_customer.html";
         
         // get current action
         String action = request.getParameter("action");
@@ -57,7 +56,7 @@ public class NewCustomerServlet extends HttpServlet {
             }
             else {
                 url = "/success.jsp";
-                //TOBA.Data.UserDB.insert(user);
+                UserDB.insert(user);
             }
             request.setAttribute("user", user);
         }
@@ -65,11 +64,4 @@ public class NewCustomerServlet extends HttpServlet {
                 .getRequestDispatcher(url)
                 .forward(request, response);
     }
-    
-    @Override
-    protected void doGet(HttpServletRequest request,
-            HttpServletResponse response)
-            throws ServletException, IOException {
-        doPost(request, response);
-    }    
 }

@@ -36,8 +36,14 @@
 
 <p>Reset your password</p>
 <form action="LoginServlet" method="post">
-        <label class="pad_top">Enter Your New Password:</label>
+        <label>Username</label>
+        <input type="text" name="j_username"><br>
+        <label class="pad_top">Password:</label>
         <input type="password" name="password"><br>
+        <label class="pad_top">New Password:</label>
+        <input type="password" name="npassword"><br>
+        <label class="pad_top">Confirm New Password:</label>
+        <input type="password" name="n2password"><br>
         <label>&nbsp;</label>
         <input type="submit" value="reset">
 </form>
@@ -46,5 +52,5 @@
 </div>
 
 </div>
-</body>
-</html>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<jsp:include page="/includes/footer.jsp" />
